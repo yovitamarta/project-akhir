@@ -8,14 +8,12 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-        */
+     */
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Tambahkan kolom hanya jika belum ada
-            if (!Schema::hasColumn('users', 'role')) {
-                $table->string('role')->default('user')->after('password');
-            }
+            $table->string('nis')->nullable()->unique();
+            $table->string('nip')->nullable()->unique();
         });
     }
 
@@ -25,8 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Hapus kolom role kalau rollback
-            $table->dropColumn('role');
+            //
         });
     }
 };

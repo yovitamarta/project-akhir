@@ -8,30 +8,37 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-   // database/seeders/DatabaseSeeder.php
-
+    
     public function run(): void
     {
+        // Admin login dengan email
         User::updateOrCreate(
-            ['email' => 'admin@gmail.com'], // cari berdasarkan email
+            ['email' => 'admin@mealyung.com'],
             [
-                'name' => 'admin',
+                'name' => 'Admin Kantin',
                 'password' => Hash::make('adminsmk1'),
                 'role' => 'admin',
             ]
         );
 
+        // Guru login dengan NIP
         User::updateOrCreate(
-            ['email' => 'user@gmail.com'],
+            ['nip' => ''],
             [
-                'name' => 'user',
+                'name' => 'Guru SMK 1',
                 'password' => Hash::make('smk1bisa'),
-                'role' => 'user',
+                'role' => 'guru',
+            ]
+        );
+
+        // Siswa login dengan NIS
+        User::updateOrCreate(
+            ['nis' => ''],
+            [
+                'name' => 'Siswa SMK 1',
+                'password' => Hash::make('smk1bisa'),
+                'role' => 'siswa',
             ]
         );
     }
-
 }
